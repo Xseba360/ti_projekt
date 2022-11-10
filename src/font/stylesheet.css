@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'IKEA Sans';
+    src: url('IKEASans-Bold.eot');
+    src: url('IKEASans-Bold.eot?#iefix') format('embedded-opentype'),
+        url('IKEASans-Bold.woff2') format('woff2'),
+        url('IKEASans-Bold.woff') format('woff'),
+        url('IKEASans-Bold.ttf') format('truetype'),
+        url('IKEASans-Bold.svg#IKEASans-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
