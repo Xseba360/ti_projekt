@@ -1,6 +1,15 @@
 import apiUrls from './apiUrls.json'
 
-const urls = apiUrls.apiUrls
+const urls: string[] = []
+if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+    for (const url of apiUrls.apiUrls.dev) {
+        urls.push(url)
+    }
+} else {
+    for (const url of apiUrls.apiUrls.prod) {
+        urls.push(url)
+    }
+}
 
 export class CacheManager {
     private static selectedApiUrl: string
