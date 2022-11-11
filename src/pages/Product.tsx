@@ -62,7 +62,7 @@ const Products = () => {
             <Row className='justify-content-between'>
                 <Col md={12} lg={8}>
                     <p>{product.description}</p>
-                    <Accordion defaultActiveKey={['0']} alwaysOpen flush>
+                    <Accordion alwaysOpen flush>
                         <Accordion.Item eventKey="0">
                             <Accordion.Header>Więcej informacji o produkcie</Accordion.Header>
                             <Accordion.Body>
@@ -81,7 +81,6 @@ const Products = () => {
                             </Accordion.Body>
                         </Accordion.Item>
                     </Accordion>
-                    {/*http://i.imgur.com/qa9YG1A.jpg*/}
                 </Col>
                 <Col xs={{span: 12, order: "first"}} lg={{span: 4, order: "last"}}>
                     <Card>
@@ -89,12 +88,20 @@ const Products = () => {
                             <h3 className='text-end'>{formatPrice(product.price, true)}</h3>
                             <div className='text-success mb-3'><BsCheckCircle size={'1.5em'}/> Dostępny</div>
                             <div className="mb-3">Darmowa dostawa dla zamówień powyżej 100zł</div>
-                            <Button className="mb-3" size='lg' variant="primary"><BsFillCartFill size={'1.25em'}
-                                                                                                 className='me-2'/> Dodaj
-                                do koszyka</Button><br/>
-                            <Button className="mb-3" size='lg' variant="success"><FaBox size={'1.25em'}
-                                                                                        className='me-2'/> Kup
-                                teraz</Button>
+                            <Button
+                                className="mb-3"
+                                size='lg'
+                                variant="primary"
+                            >
+                                <BsFillCartFill size={'1.25em'} className='me-2'/> Dodaj do koszyka
+                            </Button><br/>
+                            <Button
+                                className="mb-3"
+                                size='lg'
+                                variant="success"
+                            >
+                                <FaBox size={'1.25em'} className='me-2'/> Kup teraz
+                            </Button>
                         </Card.Body>
                     </Card>
                 </Col>
