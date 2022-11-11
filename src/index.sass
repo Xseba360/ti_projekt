@@ -1,7 +1,24 @@
+@import url('https://bootswatch.com/5/litera/bootstrap.min.css')
+
+
 .navbar
   --bs-navbar-brand-margin-end: 0
+  height: 5em
 
-.navbar-brand
+.navbar-brand, .brand
   font-weight: bold
   font-family: "IKEA Sans", sans-serif
   font-size: 2rem
+
+p
+  font-family: var(--bs-body-font-family)
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px)
+  html, body
+    overflow: hidden
+
+  main
+    height: calc(100vh - 5em)
+    overflow-x: hidden
+    overflow-y: auto
