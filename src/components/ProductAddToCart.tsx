@@ -36,7 +36,7 @@ function ProductAddToCart(props: ProductAddToCartProps) {
         if (isGeolocationAvailable && isGeolocationEnabled && coords && location === undefined) {
             getLocation().then()
         }
-    }, [coords, location])
+    }, [coords, isGeolocationAvailable, isGeolocationEnabled, location])
 
     return (
         <Card>
