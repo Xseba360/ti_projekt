@@ -26,13 +26,13 @@ function OffcanvasNavbar(props: OffcanvasNavbarProps) {
         if (categories.length < 1) {
             getCategories().then()
         }
-    }, [categories])
+    }, [categories, placement])
     const expand = false
     let title = 'Menu'
-    if (placement == 'start') {
+    if (placement === 'start') {
 
         title = 'Kategorie'
-    } else if (placement == 'end') {
+    } else if (placement === 'end') {
         title = 'Koszyk'
     }
 
@@ -51,7 +51,7 @@ function OffcanvasNavbar(props: OffcanvasNavbarProps) {
                 aria-controls={`offcanvasNavbar-${placement}-expand-${expand}`}
                 onClick={toggleMenu}
             >
-                {placement == 'start' ? <BsList size={"1.5em"}/> : <BsCart size={"1.5em"}/>}
+                {placement === 'start' ? <BsList size={"1.5em"}/> : <BsCart size={"1.5em"}/>}
             </Navbar.Toggle>
             <Navbar.Offcanvas
                 id={`offcanvasNavbar-${placement}-expand-${expand}`}
@@ -67,7 +67,7 @@ function OffcanvasNavbar(props: OffcanvasNavbarProps) {
                     </Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
-                    {placement == 'start' ? (
+                    {placement === 'start' ? (
                         <>
                             <Form className="d-flex">
                                 <Form.Control
