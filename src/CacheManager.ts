@@ -18,6 +18,8 @@ export class CacheManager {
     private static fetchedProductsByCategory: Map<UUID, boolean> = new Map()
     private static categoryCache = new Map<UUID, Category>()
     private static productCache = new Map<UUID, Product>()
+    private static fetchedRecommendedProducts: boolean = false;
+    private static recommendedProductUUIDs = new Set<UUID>()
 
     private static get apiUrl(): string {
         if (!this.selectedApiUrl) {
@@ -93,6 +95,26 @@ export class CacheManager {
             }
         }
         return Array.from(this.productCache.values()).filter((product: Product) => product.category === category)
+    }
+
+    public static async getRecommendedProducts(): Promise<Product[]> {
+        if (!this.fetchedRecommendedProducts) {
+            const apiUrl = this.apiUrl
+            const count = 6
+            const response = await fetch(`${apiUrl}products/getRecommended/${count}`)
+            const data = await response.json() as ApiResultProduct
+            if (data.status === 'success') {
+                this.fetchedRecommendedProducts = true
+                this.recommendedProductUUIDs.clear()
+                if (data.products) {
+                    data.products.forEach((product: Product) => {
+                        this.productCache.set(product.uuid, product)
+                        this.recommendedProductUUIDs.add(product.uuid)
+                    })
+                }
+            }
+        }
+        return Array.from(this.productCache.values()).filter((product: Product) => this.recommendedProductUUIDs.has(product.uuid))
     }
 
     private static selectRandomApiUrl(): string {
