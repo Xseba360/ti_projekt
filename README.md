@@ -1,27 +1,45 @@
-# Møbel
+<div>
+  <h1 align="center">Møbel Frontend</h1>
+  <h4 align="center"><i>(czyt. Mebel)</i></h4>
+</div>
 
-*(czyt. Mebel)*
+# 🏗 Tworzenie aplikacji
 
-## Uruchamianie aplikacji
+Należy zweryfikować URL do API w pliku `src/apiUrls.json` oraz zainstalować wszelkie zależności poleceniem:
 
-Należy zweryfikować URL do API w pliku `src/apiUrls.json`
+```
+npm install
+```
 
-Uruchamianie wersji developerskiej:
+Uruchamianie serwera deweloperskiego:
 
-    $ npm run start
+```
+npm run start
+```
+
+# 💻 Wersja produkcyjna
+
+Należy zweryfikować URL do API w pliku `src/apiUrls.json` oraz zainstalować wszelkie zależności poleceniem:
+
+```
+npm install
+```
 
 Budowanie wersji produkcyjnej:
 
-    $ npm run build
+```
+npm run build
+```
 
-Zbudowana wersja produkcyjna jest dostępna w folderze `build`.
+Zbudowana wersja produkcyjna jest dostępna w katalogu `/build`.
+Zawartość tego katalogu należy umieścić na serwerze WWW.
 
-## Autor
+# 🧔🏻‍♂️ Autor
 
 Sebastian Gładki
 nr. indeksu: 109 534
 
-## Licencja
+# 📜 Licencja
 
 Licencja MIT.
 Zobacz plik [LICENSE.md](LICENSE.md)
