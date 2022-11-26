@@ -1,0 +1,10 @@
+@import "~react-image-gallery/styles/scss/image-gallery.scss"
+
+.image-gallery-content:not(.fullscreen)
+  .image-gallery-slide .image-gallery-image
+    max-height: calc(100vh - calc(80px + 5em))
+
+@media (min-width: 992px)
+  .image-gallery-content:not(.fullscreen)
+    .image-gallery-slide .image-gallery-image
+      max-height: calc(60vh - 80px)

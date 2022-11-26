@@ -1,10 +1,10 @@
-import {Button, Form, Nav, Navbar, Offcanvas} from "react-bootstrap";
+import {Nav, Navbar, Offcanvas} from "react-bootstrap";
 import {BsCart, BsList} from "react-icons/bs";
 
 import {useEffect, useState} from "react";
-import {CiSearch} from "react-icons/ci";
 import {LinkContainer} from "react-router-bootstrap";
 import {CacheManager} from "../CacheManager";
+import SearchBar from "./SearchBar";
 
 interface OffcanvasNavbarProps {
     placement: 'start' | 'end'
@@ -69,15 +69,7 @@ function OffcanvasNavbar(props: OffcanvasNavbarProps) {
                 <Offcanvas.Body>
                     {placement === 'start' ? (
                         <>
-                            <Form className="d-flex">
-                                <Form.Control
-                                    type="search"
-                                    placeholder="Wyszukaj produkt"
-                                    className="me-2"
-                                    aria-label="Wyszukaj produkt"
-                                />
-                                <Button variant="outline-success"><CiSearch/></Button>
-                            </Form>
+                            <SearchBar toggleMenu={toggleMenu}/>
                             <hr></hr>
                             <Nav className="justify-content-end flex-grow-1 pe-3">
                                 {

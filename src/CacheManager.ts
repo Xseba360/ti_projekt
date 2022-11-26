@@ -16,6 +16,7 @@ export class CacheManager {
     private static readonly apiVersion: string = 'v1'
     private static fetchedAllCategories: boolean = false
     private static fetchedProductsByCategory: Map<UUID, boolean> = new Map()
+    private static fetchedProductsByQuery: Map<string, UUID[]> = new Map()
     private static categoryCache = new Map<UUID, Category>()
     private static productCache = new Map<UUID, Product>()
     private static fetchedRecommendedProducts: boolean = false;
@@ -31,8 +32,11 @@ export class CacheManager {
     public static invalidateCache(): void {
         this.fetchedAllCategories = false
         this.fetchedProductsByCategory.clear()
+        this.fetchedProductsByQuery.clear()
         this.categoryCache.clear()
         this.productCache.clear()
+        this.fetchedRecommendedProducts = false
+        this.recommendedProductUUIDs.clear()
     }
 
     public static async getAllCategories(): Promise<Category[]> {
@@ -115,6 +119,30 @@ export class CacheManager {
             }
         }
         return Array.from(this.productCache.values()).filter((product: Product) => this.recommendedProductUUIDs.has(product.uuid))
+    }
+
+
+    public static async searchProducts(query: string): Promise<Product[]> {
+        if (!this.fetchedProductsByQuery.has(query)) {
+            const apiUrl = this.apiUrl
+            const response = await fetch(`${apiUrl}products/search/${query}`)
+            const data = await response.json() as ApiResultProduct
+            if (data.status === 'success') {
+                if (data.products) {
+                    const uuids: UUID[] = data.products.map((product: Product) => product.uuid)
+                    this.fetchedProductsByQuery.set(query, uuids)
+                    data.products.forEach((product: Product) => {
+                        this.productCache.set(product.uuid, product)
+                    })
+                }
+            }
+        }
+        const uuids = this.fetchedProductsByQuery.get(query)
+        if (uuids) {
+            return Array.from(this.productCache.values()).filter((product: Product) => uuids.includes(product.uuid))
+        } else {
+            return []
+        }
     }
 
     private static selectRandomApiUrl(): string {
