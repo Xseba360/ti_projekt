@@ -32,7 +32,7 @@ npm run build
 ```
 
 Zbudowana wersja produkcyjna jest dostępna w katalogu `/build`.
-Zawartość tego katalogu należy umieścić na serwerze WWW.
+Zawartość tego katalogu należy umieścić na serwerze statycznych plików.
 
 # 🧔🏻‍♂️ Autor
 
