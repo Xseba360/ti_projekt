@@ -34,7 +34,7 @@ npm run build
 Zbudowana wersja produkcyjna jest dostępna w katalogu `/build`.
 Zawartość tego katalogu należy umieścić na serwerze statycznych plików.
 
-# 🧔🏻‍♂️ Autor
+# 👷🏻‍♂️ Autor
 
 Sebastian Gładki
 nr. indeksu: 109 534
